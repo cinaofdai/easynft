@@ -8,13 +8,19 @@ use dh2y\nft\Supports\Config;
 class Wenchang implements  GatewayApplicationInterface
 {
 
-    private $domain = "https://stage.apis.avata.bianjie.ai";
+    private $domain = "";
+
+    private $baseUrl = [
+        'dev' => 'https://stage.apis.avata.bianjie.ai',
+        'pro' => 'https://apis.avata.bianjie.ai'
+    ];
 
 
     public $config;
 
     public function __construct(Config $config){
          $this->config = $config;
+         $this->domain = $this->config->app_env=='pro'?$this->baseUrl['pro']:$this->baseUrl['dev'];
     }
 
 

@@ -8,6 +8,7 @@ use dh2y\nft\Supports\Config;
 class Wenchang implements  GatewayApplicationInterface
 {
 
+
     private $domain = "";
 
     private $baseUrl = [

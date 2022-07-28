@@ -49,7 +49,7 @@ class Wenchang implements  GatewayApplicationInterface
     public  function classes($params){
         $body = [
             "name" => $params['name'],
-            "class_id" => 'classid'.$params['class_id'],
+            "class_id" => 'nftclassid'.$params['class_id'],
             "owner" => $params['owner'],
             "operation_id" => "operationid".$this->getMillisecond(),
         ];
@@ -69,10 +69,11 @@ class Wenchang implements  GatewayApplicationInterface
             "name" => $params['name'],
             "uri" =>  $params['uri'],
             "uri_hash" => md5($params['uri']),
+            "data" => $params['num'],
             "operation_id" => "operationid".$this->getMillisecond(),
         ];
 
-        $res = $this->request("/v1beta1/nft/nfts/classid{$class_id}", [], $body, "POST");
+        $res = $this->request("/v1beta1/nft/nfts/nftclassid{$class_id}", [], $body, "POST");
         return $res;
     }
 
@@ -97,7 +98,7 @@ class Wenchang implements  GatewayApplicationInterface
             "operation_id" => "operationid".$this->getMillisecond(),
         ];
 
-        $res = $this->request("/v1beta1/nft/nft-transfers/classid{$class_id}/{$params['owner']}/{$params['nft_id']}", [], $body, "POST");
+        $res = $this->request("/v1beta1/nft/nft-transfers/nftclassid{$class_id}/{$params['owner']}/{$params['nft_id']}", [], $body, "POST");
         return $res;
     }
 
@@ -111,7 +112,7 @@ class Wenchang implements  GatewayApplicationInterface
         $body = [
             "operation_id" => "operationid".$this->getMillisecond(),
         ];
-        $res = $this->request("/v1beta1/nft/nfts/classid{$class_id}/{$params['owner']}/{$params['nft_id']}", [], $body, "DELETE");
+        $res = $this->request("/v1beta1/nft/nfts/nftclassid{$class_id}/{$params['owner']}/{$params['nft_id']}", [], $body, "DELETE");
         return $res;
     }
 

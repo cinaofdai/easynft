@@ -89,6 +89,17 @@ class Wenchang implements  GatewayApplicationInterface
     }
 
     /**
+     * NFT详情
+     * @param $class_id
+     * @param $nft_id
+     * @return mixed
+     */
+    public  function  NftDetails($class_id,$nft_id){
+        $res = $this->request("/v1beta1/nft/nfts/nftclassid{$class_id}/{$nft_id}", [], [], "GET");
+        return $res;
+    }
+
+    /**
      * 转让NFT
      * @return mixed|array
      */
